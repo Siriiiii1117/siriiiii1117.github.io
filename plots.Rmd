@@ -1,0 +1,39 @@
+---
+title: "About this website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+We often make plots in data science
+
+Here's tidyverse
+
+```{r}
+library(tidyverse)
+```
+
+Here's a dataframe
+
+```{r}
+df = tibble(
+  x = rnorm(100, mean = 1, sd = 2),
+  y = 1 + 2*x +rnorm(100)
+)
+```
+
+Here's a plot:
+
+This seems to show:
+
+$$y_i = \beta_0 + \beta_1 x_i + \epsilon_i$$
+
+```{r}
+df |> 
+ggplot(aes(x = x, y = y)) +
+  geom_point()
+```
+
+Go back to the [homepage](index.html)
