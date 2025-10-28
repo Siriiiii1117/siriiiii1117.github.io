@@ -1,25 +1,21 @@
 ---
-title: "plot_ly and dashboard"
-output: html_document
-date: "2025-10-27"
+title: "Flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
-Interactivity is great.
-
-Here's the tidyverse.
-
 ```{r setup, include=FALSE}
+library(flexdashboard)
 library(tidyverse)
 library(plotly)
-
 library(p8105.datasets)
 ```
 
-Load airbnb dataset.
 
 ```{r}
 data("nyc_airbnb")
-
 nyc_airbnb = 
   nyc_airbnb |> 
   mutate(
@@ -37,7 +33,11 @@ nyc_airbnb =
   )
 ```
 
-Make a scatterplot but interactive this time.
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
 
 ```{r}
 nyc_airbnb |> 
@@ -51,8 +51,10 @@ nyc_airbnb |>
   )
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
 
-Let's make boxplot:
+### Chart B
 
 ```{r}
 nyc_airbnb |> 
@@ -65,7 +67,7 @@ nyc_airbnb |>
   )
 ```
 
-Maybe barcharts next?
+### Chart C
 
 ```{r}
 nyc_airbnb |> 
@@ -78,19 +80,4 @@ nyc_airbnb |>
     type = "bar"
   )
 ```
-
-## ggplotly
-
-don't use this often
-
-```{r}
-ggp_scatterplot = 
-  nyc_airbnb |> 
-  ggplot(aes(x = lat, y = long, color = price)) +
-  geom_point()
-
-ggplotly(ggp_scatterplot)
-```
-
-
 
